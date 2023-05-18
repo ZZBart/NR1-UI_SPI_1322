@@ -1,91 +1,125 @@
-Inspired by: [diehardsk/Volumio-OledUI](https://github.com/diehardsk/Volumio-OledUI) // 
-This is the Python3 version of [Maschine2501/Volumio-OledUI](https://github.com/Maschine2501/Volumio-OledUI/)
+ ## Welcome to the NR1-UI_SPI_1322 wiki!
+ Inspired by: [diehardsk/Volumio-OledUI](https://github.com/diehardsk/Volumio-OledUI) // 
+ This is the Python3 version of [Maschine2501/Volumio-OledUI](https://github.com/Maschine2501/Volumio-OledUI/)
+ Modified by [ZZBart/NR1-UI_SPI_1322](https://github.com/ZZBart/NR1-UI_SPI_1322)``Welcome to the NR1-UI_SPI_1322 wiki!
 
-# 18.10.2022: The Journey came to an End.
-### I wont push this project any further, cause I do not longer use Volumio. Feel free to fork this Project. I'll leave the Discord Chanel open for you, so you can reach out for each others support.
 
-## It was a great time, Thank you! <3
 
-# 27.03.2022 Volumio 3.xx is now supported:
-Today I fixed the installation routine for the new Volumio 3.xx.
-I tested the Installation script twice on a fresh installed RPi4 -> Succeeded both times.
-If you have an issue, please report it :)
-Here is the instruction for the Installation: [Install-Manuall for Volumio 3.xx NR1-UI](https://github.com/Maschine2501/NR1-UI/wiki/Volumio-Buster-Installation)
 
 ## Supported Displays:
-- [x] SSD1306 (monochrome Oled 128x64)
 - [x] SSD1322 (grayscale Oled 256x64)
-- [x] SSD1351  (full color Oled 128x128)
-- [x] ST7735 (full color LCD 160x128)
-
-## Wishlist/To-Do:
-- [ ] ILI9341 (Maybe ILI9488) display support(Alpha-phase)
-
-- [ ] SSD1309 (monochrome Oled 128x64)
-- [ ] BGR / RGB Selection for ssd1351 displays
-- [ ] Sort out / Clean up Setup
-- [ ] Investigate Problem with some DAC's
-- [ ] Implement Volume Control
-- [ ] Implement Source Dialog
-- [ ] Implement a "Settings Menu"
 
 
 
 # NR1-UI
-Im building a Network Hifi Receiver from scratch. Main components are a RaspberryPi4 and an HiFi-Berry-Dac. An old Braun T2 Tuner serves as case for the player.
-To keep as much as possible from the look of the device I needed an Interface for Volumio. And especialy one that supports a 3,2" ssd1322 SPI Oled with 256x64Pixel.
-After doing some research I found diehrdsk/Volumio-OledUI. It fullfills many points on my "wishlist" but not nearly all.
-As we all know, the way is the destination, i spent some time (much time....) in modifying the original code.
-The project is not finished yet... but close the the goal!
-
-I try to assist you, if you got questions or even problems with the code, just contact me. 
-
-Time by time more informations in the [wiki](https://github.com/Maschine2501/NR1-UI/wiki) will follow...
-
-## The Code is modular and has a Setup-Process.
-
-#### [Features](https://github.com/Maschine2501/NR1-UI/wiki/Features)
+[Maschine2501/Volumio-OledUI](https://github.com/Maschine2501/Volumio-OledUI/) building a Network Hifi Receiver from scratch. Main components are a RaspberryPi4 and an HiFi-Berry-Dac. An old Braun T2 Tuner serves as case for the player.
+To keep as much as possible from the look of the device he needed an Interface for Volumio. And especialy one that supports a 3,2" ssd1322 SPI Oled with 256x64Pixel.
+After doing some research he found diehrdsk/Volumio-OledUI. It fullfills many points on his "wishlist" but not nearly all.
+As we all know, the way is the destination, he and i spent some time (much time....) in modifying the original code.
+The project is not finished yet... now i'm building my own.
 
 
-#### [Allready Done](https://github.com/Maschine2501/NR1-UI/wiki/Allready-Done)
 
 
-#### [Project on Volumio-Forum](https://community.volumio.org/t/oled-user-inteface-for-volumio-with-rotary-and-4-buttons-modular-highly-configurable-supports-ssd1306-and-ssd1322/40378?u=maschine2501)
+## The Code is modular and has a Setup-Process. For more information please check [Maschine2501/NR1-UI](https://github.com/Maschine2501/NR1-UI)
+
+
+
+## [1. Installation steps]
+#  1st step:
+
+* download Volumio Image:
+```
+https://volumio.com/en/get-started/
+```
+* download "Win32Diskimager": 
+```
+https://sourceforge.net/projects/win32diskimager/
+```
+* Insert the SD card into your SD card reader -> Note the drive letter assigned to the SD card. (You can see the drive letter in the left hand column of Windows Explorer, for example G:)
+* Run Win32DiskImager utility.
+* Select the downloaded Volumio image file
+* In the device box, select the drive letter of the SD card. (Be careful to select the correct drive: if you choose the wrong drive you could destroy the data on your computer's hard disk!)
+* Click 'Write' and wait for the write to complete.
+* Exit the imager and do NOT eject the SD card.
 
 ---
 
-## [1. Installation steps](https://github.com/Maschine2501/NR1-UI/wiki/Volumio-Buster-Installation)
----
+# 2nd step:
 
-#### Configuration Manual (will follow soon!)
----
+Prepare the /boot partition:
+2 a)
 
-#### [wiring / button-layout / truthtable](https://github.com/Maschine2501/NR1-UI/wiki/wiring-and-button-truth-table)
----
+   * Open your File-Explorer/File-Browser and open the SD-Card Folder, which is labled as "boot"
+   * Check if there is a .txt file called "userconfig.txt" -> if not, make one (empty**)**
 
-#### [hardware](https://github.com/Maschine2501/NR1-UI/wiki/hardware)
----
+2 b) ssh File:
 
-#### [dependencies](https://github.com/Maschine2501/NR1-UI/wiki/dependencies)
----
+   * In the SD-Card Folder "boot", create a new textfile without any letters in it.
+   * rename the textfile to "ssh" ("newtextfile.txt -> rename -> ssh)
 
-#### [font-info and source](https://github.com/Maschine2501/NR1-UI/wiki/font-information-(source))
----
+# 3rd step:
+Boot the Raspberry Pi up and get PuTTy / KiTTy ready
 
-## Your Display is not supported yet? You have an idea for a function/feature?
-### -> Contact me:
-#### [E-Mail](mailto:Maschine2501@gmx.de?subject=[GitHub]%20Source%20Han%20Sans)
-#### [Discord Server for direct contact: Click here to join...](https://discord.gg/GJ4ED3F)
+  *  put sd-card in the raspberry, (connet it to a network) and let it boot
+  *  download either PuTTy or KiTTy (ssh clients)
+  *  research on how to connect to a Raspberry using ssh [search](https://www.google.com/search?client=firefox-b-d&q=raspberry+connect+by+ssh)
+  *  log in to the Pi with ssh, standard user=volumio, standard pw=volumio
+
+# 4th step:
+log in to the Web-UI and finish the "first start setup"
+if you want to use a HDMI (Touch-) Display, please install The Touch-Display Plugin, in Volumio-Plugin-Menu, first, then:
+```
+git clone https://github.com/ZZBart/NR1-UI_SPI_1322.git
+```
+```
+bash NR1-UI/install.sh
+```
+
+### Now just do a reboot:
+```
+reboot
+```
+
+Here you are, all installed ;)
+If something is wrong:
+check the journal!
 
 
-### To change the look/layout just press Button-C in "Standby-Screen" (Clock), select the desired Layout with the Rotary-Rotation and push the Rotary once to apply selection -> 
-![Screenselect](https://github.com/Maschine2501/NR1-UI/blob/master/wiki/screenshots/ssd1322Screenselect.png)
+### For NR1UI:
 
-### Screenshots and Layout Overview:
-![Screenshots](https://github.com/Maschine2501/NR1-UI/blob/master/wiki/screenshots/Screenshots.png)
+```
+sudo journalctl -fu nr1ui.service
+```
 
-### [buy me a coffee, or tip me ;-)](https://paypal.me/maschine2501)
+### For Cava1:
+```
+sudo journalctl -fu cava1.service
+```
 
-![MS2501](https://github.com/Maschine2501/NR1-UI/blob/master/wiki/MadeByGloria.jpg)
-[Logo made by glorious @Klassik_Otaku](http://www.instagram.com/klassik_otaku)
+### For Cava2:
+```
+sudo journalctl -fu cava2.service
+```
 
+### Stop the service (the program):
+```
+sudo systemctl stop nr1ui.service
+```
+```
+sudo systemctl stop cava1.service
+```
+```
+sudo systemctl stop cava2.service
+```
+
+### Start the service (the program):
+```
+sudo systemctl start nr1ui.service
+```
+```
+sudo systemctl start cava1.service
+```
+```
+sudo systemctl start cava2.service
+```
