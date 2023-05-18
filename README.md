@@ -70,7 +70,7 @@ Boot the Raspberry Pi up and get PuTTy / KiTTy ready
 log in to the Web-UI and finish the "first start setup"
 if you want to use a HDMI (Touch-) Display, please install The Touch-Display Plugin, in Volumio-Plugin-Menu, first, then:
 ```
-git clone https://github.com/ZZBart/NR1-UI_SPI_1322.git
+git clone https://github.com/ZZBart/NR1-UI_SPI_1322.git NR1-UI
 ```
 ```
 bash NR1-UI/install.sh
